@@ -13,7 +13,7 @@ const SECTIONS = {
   ideas2025: { label:'Ideas 2025', color:'#3B5B7A' },
   ideas2026: { label:'Ideas 2026', color:'#3E7A72' },
   gobierno:  { label:'Gobierno y medición', color:'#C4482B' },
-  programas: { label:'Programas y renuncias', color:'#C99A52' },
+  programas: { label:'Programas', color:'#C99A52' },
   mas:       { label:'Más allá de innovación', color:'#5E8368' }
 };
 
