@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-14T16:33:18.742Z",
+  "updatedAt": "2026-08-14T16:35:06.237Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -193,18 +193,6 @@
       "status": "todo",
       "dueDate": "",
       "order": 160,
-      "createdAt": "2026-08-14T16:07:51.754Z"
-    },
-    {
-      "id": "seed-18",
-      "section": "mas",
-      "title": "Diseñar el mensaje para visibilizar que cualquiera puede resolver con GPT/Claude antes de pasar a backlog",
-      "detail": "",
-      "owner": "mario",
-      "priority": "alta",
-      "status": "todo",
-      "dueDate": "",
-      "order": 170,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
