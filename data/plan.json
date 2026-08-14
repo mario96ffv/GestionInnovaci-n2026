@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-14T16:18:23.443Z",
+  "updatedAt": "2026-08-14T16:19:36.142Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -193,18 +193,6 @@
       "status": "todo",
       "dueDate": "",
       "order": 150,
-      "createdAt": "2026-08-14T16:07:51.754Z"
-    },
-    {
-      "id": "seed-17",
-      "section": "mas",
-      "title": "Mantener el foco en la implementación de ideas activas",
-      "detail": "",
-      "owner": "ambos",
-      "priority": "media",
-      "status": "todo",
-      "dueDate": "",
-      "order": 170,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
