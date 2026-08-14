@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-14T16:48:03.055Z",
+  "updatedAt": "2026-08-14T16:52:00.126Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -225,7 +225,7 @@
       "dueDate": "",
       "order": 20,
       "createdAt": "2026-08-14T16:23:34.415Z",
-      "title": "Comunicar caso de éxito: implementado ya el área",
+      "title": "Video casos de éxito: implementado ya el área",
       "section": "mas",
       "owner": "laura",
       "priority": "media",
