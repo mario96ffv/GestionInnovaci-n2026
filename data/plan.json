@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-14T16:27:16.549Z",
+  "updatedAt": "2026-08-14T16:28:05.246Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -254,6 +254,18 @@
       "owner": "laura",
       "priority": "media",
       "status": "todo"
+    },
+    {
+      "id": "120b1109-9bd7-493f-9a83-2a22e5e3d5e3",
+      "detail": "",
+      "dueDate": "2026-08-17",
+      "order": 20,
+      "createdAt": "2026-08-14T16:28:04.138Z",
+      "title": "Comunicación: general y personalizada de ideas innovadoras paso a la acción",
+      "section": "mas",
+      "owner": "laura",
+      "priority": "alta",
+      "status": "doing"
     }
   ]
 }
