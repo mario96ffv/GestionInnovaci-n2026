@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-14T16:21:42.669Z",
+  "updatedAt": "2026-08-14T16:21:44.379Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -24,7 +24,7 @@
       "priority": "alta",
       "status": "todo",
       "dueDate": "",
-      "order": 20,
+      "order": 10,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -216,7 +216,7 @@
       "priority": "alta",
       "status": "todo",
       "dueDate": "",
-      "order": 10,
+      "order": 20,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
