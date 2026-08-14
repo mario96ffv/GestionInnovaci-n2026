@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-14T16:52:12.901Z",
+  "updatedAt": "2026-08-14T17:01:03.128Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -48,7 +48,7 @@
       "priority": "alta",
       "status": "todo",
       "dueDate": "",
-      "order": 60,
+      "order": 50,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -60,7 +60,7 @@
       "priority": "alta",
       "status": "todo",
       "dueDate": "",
-      "order": 70,
+      "order": 60,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -72,7 +72,7 @@
       "priority": "alta",
       "status": "todo",
       "dueDate": "",
-      "order": 80,
+      "order": 70,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -84,7 +84,7 @@
       "priority": "media",
       "status": "todo",
       "dueDate": "",
-      "order": 90,
+      "order": 80,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -96,7 +96,7 @@
       "priority": "media",
       "status": "todo",
       "dueDate": "",
-      "order": 100,
+      "order": 90,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -120,7 +120,7 @@
       "priority": "media",
       "status": "todo",
       "dueDate": "",
-      "order": 110,
+      "order": 100,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -132,7 +132,7 @@
       "priority": "alta",
       "status": "todo",
       "dueDate": "",
-      "order": 120,
+      "order": 110,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -144,7 +144,7 @@
       "priority": "alta",
       "status": "todo",
       "dueDate": "",
-      "order": 130,
+      "order": 120,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -156,7 +156,7 @@
       "priority": "alta",
       "status": "todo",
       "dueDate": "",
-      "order": 140,
+      "order": 130,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -168,7 +168,7 @@
       "priority": "media",
       "status": "todo",
       "dueDate": "",
-      "order": 150,
+      "order": 140,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -192,7 +192,7 @@
       "priority": "media",
       "status": "todo",
       "dueDate": "",
-      "order": 160,
+      "order": 150,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -211,13 +211,13 @@
       "id": "7ed8503c-f62e-48a6-b252-0422fa665aba",
       "detail": "",
       "dueDate": "",
-      "order": 10,
+      "order": 160,
       "createdAt": "2026-08-14T16:17:27.425Z",
       "title": "Realizar contexto: reto edu financiera",
       "section": "programas",
       "owner": "mario",
       "priority": "media",
-      "status": "doing"
+      "status": "todo"
     },
     {
       "id": "de95f443-d712-40a1-ab2a-60aac8d1dd70",
