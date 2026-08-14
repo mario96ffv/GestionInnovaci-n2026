@@ -4,7 +4,7 @@
 /* ============================================================
    CONFIG / CONSTANTS
    ============================================================ */
-const CONFIG_KEY = 'giro_plan_gh_config_v1';
+const CONFIG_KEY = 'giro_plan_gh_config_v1';8
 const CACHE_KEY  = 'giro_plan_cache_v1';
 const IDENTITY_KEY = 'giro_plan_identity_v1';
 const API_BASE = 'https://api.github.com';
@@ -76,6 +76,7 @@ let state = {
   syncing: false,
   online: false,
   configured: false,
+  dirty: false,
   lastSyncedAt: null,
   activeFilters: new Set(Object.keys(SECTIONS)),
   editingId: null,
@@ -144,7 +145,8 @@ function loadConfig(){
 function persistConfig(){
   try{ localStorage.setItem(CONFIG_KEY, JSON.stringify(config)); }catch(e){}
 }
-function isConfigured(){ return !!(config.owner && config.repo && config.token); }
+function isReadConfigured(){ return !!(config.owner && config.repo); }
+function isWriteConfigured(){ return !!(config.owner && config.repo && config.token); }
 
 function loadIdentity(){ return localStorage.getItem(IDENTITY_KEY) || ''; }
 function saveIdentity(v){ try{ localStorage.setItem(IDENTITY_KEY, v); }catch(e){} }
@@ -154,10 +156,10 @@ function saveIdentity(v){ try{ localStorage.setItem(IDENTITY_KEY, v); }catch(e){
    ============================================================ */
 function ghHeaders(json){
   const h = {
-    'Authorization': 'Bearer ' + config.token,
     'Accept': 'application/vnd.github+json',
     'X-GitHub-Api-Version': '2022-11-28'
   };
+  if(config.token) h['Authorization'] = 'Bearer ' + config.token;
   if(json) h['Content-Type'] = 'application/json';
   return h;
 }
@@ -167,7 +169,7 @@ function contentsUrl(withRef){
 }
 
 async function fetchRemote(){
-  if(!isConfigured()) return {ok:false, reason:'no-config'};
+  if(!isReadConfigured()) return {ok:false, reason:'no-config'};
   try{
     const res = await fetch(contentsUrl(true), { headers: ghHeaders(false) });
     if(res.status === 200){
@@ -176,6 +178,7 @@ async function fetchRemote(){
       state.items = Array.isArray(json.items) ? json.items : [];
       state.sha = data.sha;
       state.online = true;
+      state.lastSyncedAt = new Date();
       cacheLocal();
       return {ok:true};
     } else if(res.status === 404){
@@ -197,7 +200,7 @@ async function fetchRemote(){
 
 async function saveRemote(retry){
   if(retry === undefined) retry = true;
-  if(!isConfigured()){ cacheLocal(); renderSyncStatus(); return; }
+  if(!isWriteConfigured()){ cacheLocal(); renderSyncStatus(); return; }
   state.syncing = true; renderSyncStatus();
   const payload = {
     version: 1,
@@ -218,6 +221,7 @@ async function saveRemote(retry){
       state.sha = data.content.sha;
       state.online = true;
       state.lastSyncedAt = new Date();
+      state.dirty = false;
       cacheLocal();
       hideBanner();
     } else if(res.status === 409 && retry){
@@ -316,6 +320,7 @@ function nudgeItem(id, dir){
   afterMutate();
 }
 function afterMutate(){
+  state.dirty = true;
   cacheLocal();
   renderBoard();
   renderStats();
@@ -328,24 +333,25 @@ function afterMutate(){
 function renderSyncStatus(){
   const pill = document.getElementById('syncPill');
   const text = document.getElementById('syncPillText');
-  const markSmall = document.querySelector('#syncPill .sync-dot');
   const footer = document.getElementById('lastSyncedFooter');
   let stateAttr = 'offline', label = 'sin configurar';
   if(state.syncing){
     stateAttr = 'saving'; label = 'guardando…';
-  } else if(!isConfigured()){
+  } else if(!isReadConfigured()){
     stateAttr = 'offline'; label = 'sin configurar';
-  } else if(state.online){
-    stateAttr = 'synced'; label = 'sincronizado';
+  } else if(isWriteConfigured()){
+    if(state.online){ stateAttr = 'synced'; label = 'sincronizado'; }
+    else { stateAttr = 'offline'; label = 'sin conexión'; }
   } else {
-    stateAttr = 'offline'; label = 'sin conexión';
+    if(state.online){ stateAttr = 'synced'; label = 'actualizado (solo lectura)'; }
+    else { stateAttr = 'offline'; label = 'sin conexión'; }
   }
   pill.dataset.state = stateAttr;
   text.textContent = label;
   if(state.lastSyncedAt){
-    footer.textContent = 'Última sincronización: ' + state.lastSyncedAt.toLocaleString('es-CO');
+    footer.textContent = 'Última actualización: ' + state.lastSyncedAt.toLocaleString('es-CO');
   } else {
-    footer.textContent = isConfigured() ? 'Aún sin sincronizar' : 'Sincronización no configurada — usa el ícono de ajustes';
+    footer.textContent = isReadConfigured() ? 'Aún sin sincronizar' : 'Sincronización no configurada — usa el ícono de ajustes';
   }
 }
 
@@ -737,10 +743,10 @@ function bindStaticUI(){
     persistConfig();
     closeSettingsModal();
     renderSyncStatus();
-    if(isConfigured()){
+    if(isReadConfigured()){
       const r = await fetchRemote();
       if(r.ok && !r.notFound){ renderAll(); }
-      else if(r.ok && r.notFound){ await saveRemote(true); renderAll(); }
+      else if(r.ok && r.notFound){ if(isWriteConfigured()) await saveRemote(true); renderAll(); }
       else { bannerForFetchFailure(r); renderSyncStatus(); }
     }
   });
@@ -769,7 +775,7 @@ async function init(){
   loadConfig();
   bindStaticUI();
 
-  if(isConfigured()){
+  if(isReadConfigured()){
     const r = await fetchRemote();
     if(r.ok && !r.notFound){
       // items already set from remote
@@ -787,6 +793,26 @@ async function init(){
     if(cache) state.sha = cache.sha;
   }
   renderAll();
+  startAutoRefresh();
+}
+
+function startAutoRefresh(){
+  if(!isReadConfigured()) return;
+  document.addEventListener('visibilitychange', ()=>{
+    if(document.visibilityState === 'visible') refreshFromRemote();
+  });
+  setInterval(()=>{
+    if(document.visibilityState === 'visible') refreshFromRemote();
+  }, 5*60*1000);
+}
+
+async function refreshFromRemote(){
+  // Don't clobber an editor's unsynced local changes; a read-only viewer
+  // has nothing local worth protecting, since they can never save anyway.
+  if(isWriteConfigured() && state.dirty) return;
+  const r = await fetchRemote();
+  if(r.ok && !r.notFound){ renderAll(); }
+  else if(!r.ok){ bannerForFetchFailure(r); renderSyncStatus(); }
 }
 
 init();
