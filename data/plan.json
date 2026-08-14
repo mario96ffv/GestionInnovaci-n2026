@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-14T16:45:10.491Z",
+  "updatedAt": "2026-08-14T16:47:44.960Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -198,8 +198,8 @@
     {
       "id": "seed-20",
       "section": "mas",
-      "title": "Recopilar casos de éxito ya implementados: ejemplo caso Natalia Betancur y People Ops",
-      "detail": "1. Entender el caso de uso de Natalia, el alcance de la solución y el valor que genera\n\n2. Mapear por los menos 2 casos de People Ops para iniciar comunicando los de nuestra dirección.",
+      "title": "Recopilar casos de éxito ya implementados: ejemplo caso Natalia Betancur + People Ops + Idea Innovadora",
+      "detail": "1. Entender el caso de uso de Natalia, el alcance de la solución y el valor que genera\n\n2. Mapear por los menos 2 casos de People Ops para iniciar comunicando los de nuestra dirección.\n\n3. Al menos un caso implementado de idea innovadora",
       "owner": "laura",
       "priority": "media",
       "status": "todo",
