@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-14T16:21:52.895Z",
+  "updatedAt": "2026-08-14T16:21:58.040Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -192,7 +192,7 @@
       "priority": "media",
       "status": "todo",
       "dueDate": "",
-      "order": 140,
+      "order": 150,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -228,7 +228,7 @@
       "priority": "media",
       "status": "todo",
       "dueDate": "",
-      "order": 150,
+      "order": 140,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
