@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-14T16:21:59.932Z",
+  "updatedAt": "2026-08-14T16:22:41.862Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -222,7 +222,7 @@
     {
       "id": "seed-20",
       "section": "mas",
-      "title": "Recopilar y comunicar casos de éxito ya implementados (ej. app de Natalia Betancur en Licenciamientos)",
+      "title": "Recopilar casos de éxito ya implementados",
       "detail": "",
       "owner": "laura",
       "priority": "media",
