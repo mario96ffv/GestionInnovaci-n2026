@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-14T16:22:41.862Z",
+  "updatedAt": "2026-08-14T16:23:35.524Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -242,6 +242,18 @@
       "owner": "mario",
       "priority": "media",
       "status": "doing"
+    },
+    {
+      "id": "de95f443-d712-40a1-ab2a-60aac8d1dd70",
+      "detail": "",
+      "dueDate": "",
+      "order": 170,
+      "createdAt": "2026-08-14T16:23:34.415Z",
+      "title": "Comunicar caso de éxito: implementado ya el área",
+      "section": "mas",
+      "owner": "laura",
+      "priority": "media",
+      "status": "todo"
     }
   ]
 }
