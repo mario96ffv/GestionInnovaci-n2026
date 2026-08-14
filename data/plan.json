@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-14T16:47:44.960Z",
+  "updatedAt": "2026-08-14T16:48:03.055Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -221,7 +221,7 @@
     },
     {
       "id": "de95f443-d712-40a1-ab2a-60aac8d1dd70",
-      "detail": "Esta comunicación debe construirse con los siguientes aspectos:\n\n1. Video donde se muestre como se hacía antes y como se hace ahora con la implementación \n2. Propuesta de guion: intro, explicación de cada uno de los casos, llamado a la acción.",
+      "detail": "Esta comunicación debe construirse con los siguientes aspectos:\n\n1. Video donde se muestre como se hacía antes y como se hace ahora con la implementación \n2. Propuesta de guion: intro, explicación de cada uno de los casos + idea innovadora, llamado a la acción.",
       "dueDate": "",
       "order": 20,
       "createdAt": "2026-08-14T16:23:34.415Z",
