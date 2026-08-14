@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-14T16:35:06.237Z",
+  "updatedAt": "2026-08-14T16:37:17.349Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -233,7 +233,7 @@
     },
     {
       "id": "120b1109-9bd7-493f-9a83-2a22e5e3d5e3",
-      "detail": "",
+      "detail": "Incluir el llamado a la acción: como estamos en la implementación de las ideas, una manera rápida de hacerlo es hacer uso de los recursos que tienen algunas áreas mediante inteligencia artificial y si no se puede escalar a equipos que lo hacen posible pero teniendo en cuenta los tiempos de espera en la priorización y backlogs de trabajo.",
       "dueDate": "2026-08-21",
       "order": 20,
       "createdAt": "2026-08-14T16:28:04.138Z",
