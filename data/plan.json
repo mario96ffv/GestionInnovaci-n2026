@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-14T16:23:41.725Z",
+  "updatedAt": "2026-08-14T16:27:16.549Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -222,7 +222,7 @@
     {
       "id": "seed-20",
       "section": "mas",
-      "title": "Recopilar casos de éxito ya implementados",
+      "title": "Recopilar casos de éxito ya implementados: ejemplo caso Natalia Betancur y People Ops",
       "detail": "",
       "owner": "laura",
       "priority": "media",
