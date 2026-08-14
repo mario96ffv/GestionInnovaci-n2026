@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-14T16:17:41.463Z",
+  "updatedAt": "2026-08-14T16:18:23.443Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -178,9 +178,9 @@
       "detail": "",
       "owner": "mario",
       "priority": "baja",
-      "status": "todo",
+      "status": "done",
       "dueDate": "",
-      "order": 140,
+      "order": 0,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
