@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-14T16:32:39.908Z",
+  "updatedAt": "2026-08-14T16:33:18.742Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -205,18 +205,6 @@
       "status": "todo",
       "dueDate": "",
       "order": 170,
-      "createdAt": "2026-08-14T16:07:51.754Z"
-    },
-    {
-      "id": "seed-19",
-      "section": "mas",
-      "title": "Definir cómo los Retos van a documentar los casos de uso GPT/Claude ya implementados en las áreas",
-      "detail": "",
-      "owner": "ambos",
-      "priority": "alta",
-      "status": "todo",
-      "dueDate": "",
-      "order": 50,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
