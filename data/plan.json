@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-18T13:29:07.054Z",
+  "updatedAt": "2026-08-18T13:29:12.721Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -108,7 +108,7 @@
       "priority": "alta",
       "status": "doing",
       "dueDate": "",
-      "order": 10,
+      "order": 20,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -166,9 +166,9 @@
       "detail": "",
       "owner": "ambos",
       "priority": "alta",
-      "status": "todo",
+      "status": "doing",
       "dueDate": "2026-08-24",
-      "order": 140,
+      "order": 10,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -235,7 +235,7 @@
       "id": "120b1109-9bd7-493f-9a83-2a22e5e3d5e3",
       "detail": "Incluir el llamado a la acción: como estamos en la implementación de las ideas, una manera rápida de hacerlo es hacer uso de los recursos que tienen algunas áreas mediante inteligencia artificial y si no se puede escalar a equipos que lo hacen posible pero teniendo en cuenta los tiempos de espera en la priorización y backlogs de trabajo.",
       "dueDate": "2026-08-21",
-      "order": 20,
+      "order": 30,
       "createdAt": "2026-08-14T16:28:04.138Z",
       "title": "Piezas de Comunicación: general y personalizada de ideas innovadoras paso a la acción",
       "section": "mas",
