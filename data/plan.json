@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-18T13:29:30.007Z",
+  "updatedAt": "2026-08-18T13:31:59.742Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -197,8 +197,8 @@
     },
     {
       "id": "7ed8503c-f62e-48a6-b252-0422fa665aba",
-      "detail": "",
-      "dueDate": "",
+      "detail": "- Presentar la metodología y ajustar para iniciar el plan de trabajo",
+      "dueDate": "2026-08-24",
       "order": 160,
       "createdAt": "2026-08-14T16:17:27.425Z",
       "title": "Realizar contexto: reto edu financiera",
