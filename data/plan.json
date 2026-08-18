@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-14T18:23:18.363Z",
+  "updatedAt": "2026-08-18T13:27:54.002Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -242,6 +242,18 @@
       "owner": "laura",
       "priority": "alta",
       "status": "doing"
+    },
+    {
+      "id": "2fe40332-3112-4bb9-af04-3e6c7adb7f49",
+      "detail": "Taller donde se formarán los participantes en el uso de sus herramientas disponibles para solucionar problemas de su área, la idea es que sepan que esto también es innovación y pueden despertar la creatividad a servicio de Sistecrédito.",
+      "dueDate": "2026-08-28",
+      "order": 170,
+      "createdAt": "2026-08-18T13:27:52.899Z",
+      "title": "Taller GIRO: ¿Cómo innovar y hacerlo posible desde mi área mediante la IA?",
+      "section": "programas",
+      "owner": "laura",
+      "priority": "alta",
+      "status": "todo"
     }
   ]
 }
