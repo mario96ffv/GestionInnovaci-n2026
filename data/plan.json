@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-18T19:34:03.687Z",
+  "updatedAt": "2026-08-18T19:42:22.284Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -245,7 +245,7 @@
     },
     {
       "id": "61b4ec23-91fb-464d-bbcb-c5656ecab7f3",
-      "detail": "Desarrollar con los embajadores una sesión de reto para dar solución a un reto estratégico.",
+      "detail": "Desarrollar con los embajadores una sesión de reto para dar solución a un reto estratégico",
       "dueDate": "2026-09-11",
       "order": 170,
       "createdAt": "2026-08-18T13:38:31.676Z",
