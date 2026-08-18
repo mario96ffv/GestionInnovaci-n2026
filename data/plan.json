@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-18T13:31:59.742Z",
+  "updatedAt": "2026-08-18T13:34:00.736Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -242,6 +242,18 @@
       "owner": "laura",
       "priority": "alta",
       "status": "doing"
+    },
+    {
+      "id": "c7ea67a5-ffa2-455e-8d82-dc1f1f042f75",
+      "detail": "-  Entrega reconocimiento\n- Avances Gestión de la Innovación",
+      "dueDate": "2026-08-25",
+      "order": 170,
+      "createdAt": "2026-08-18T13:33:59.634Z",
+      "title": "Sesión reconocimientos Foco Reto Producto",
+      "section": "programas",
+      "owner": "laura",
+      "priority": "alta",
+      "status": "todo"
     }
   ]
 }
