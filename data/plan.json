@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-18T13:29:12.721Z",
+  "updatedAt": "2026-08-18T13:29:30.007Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -181,18 +181,6 @@
       "status": "done",
       "dueDate": "",
       "order": 0,
-      "createdAt": "2026-08-14T16:07:51.754Z"
-    },
-    {
-      "id": "seed-15",
-      "section": "programas",
-      "title": "Agendar y preparar la sesión de calificación de ideas en Disruplab (rol de ideadores)",
-      "detail": "",
-      "owner": "ambos",
-      "priority": "media",
-      "status": "todo",
-      "dueDate": "",
-      "order": 150,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
