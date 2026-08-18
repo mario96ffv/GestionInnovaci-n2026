@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-18T13:39:41.918Z",
+  "updatedAt": "2026-08-18T13:40:29.229Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -109,18 +109,6 @@
       "status": "doing",
       "dueDate": "",
       "order": 20,
-      "createdAt": "2026-08-14T16:07:51.754Z"
-    },
-    {
-      "id": "seed-9",
-      "section": "ideas2026",
-      "title": "Optimizar los tiempos de reunión del comité de calificación",
-      "detail": "",
-      "owner": "ambos",
-      "priority": "media",
-      "status": "todo",
-      "dueDate": "",
-      "order": 100,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
