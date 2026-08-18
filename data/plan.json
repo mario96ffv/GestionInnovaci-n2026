@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-18T13:45:02.782Z",
+  "updatedAt": "2026-08-18T13:46:46.286Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -289,6 +289,18 @@
       "section": "mas",
       "owner": "laura",
       "priority": "media",
+      "status": "todo"
+    },
+    {
+      "id": "6f13c374-1390-49e8-a22c-86b65959bd1e",
+      "detail": "- Validación inicial de las primeras 5 ideas",
+      "dueDate": "2026-08-25",
+      "order": 220,
+      "createdAt": "2026-08-18T13:46:45.182Z",
+      "title": "Revisión por parte de GIRO: ideas semana de la innovación",
+      "section": "ideas2026",
+      "owner": "ambos",
+      "priority": "alta",
       "status": "todo"
     }
   ]
