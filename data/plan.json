@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-18T18:08:26.234Z",
+  "updatedAt": "2026-08-18T18:08:30.868Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -48,7 +48,7 @@
       "priority": "alta",
       "status": "todo",
       "dueDate": "",
-      "order": 50,
+      "order": 60,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -60,7 +60,7 @@
       "priority": "alta",
       "status": "todo",
       "dueDate": "",
-      "order": 60,
+      "order": 70,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -72,7 +72,7 @@
       "priority": "alta",
       "status": "todo",
       "dueDate": "",
-      "order": 70,
+      "order": 80,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -84,7 +84,7 @@
       "priority": "media",
       "status": "todo",
       "dueDate": "",
-      "order": 80,
+      "order": 90,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -96,7 +96,7 @@
       "priority": "media",
       "status": "todo",
       "dueDate": "",
-      "order": 90,
+      "order": 100,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -187,7 +187,7 @@
       "id": "7ed8503c-f62e-48a6-b252-0422fa665aba",
       "detail": "- Presentar la metodología y ajustar para iniciar el plan de trabajo",
       "dueDate": "2026-08-24",
-      "order": 160,
+      "order": 140,
       "createdAt": "2026-08-14T16:17:27.425Z",
       "title": "Realizar contexto: reto edu financiera",
       "section": "programas",
@@ -235,7 +235,7 @@
       "id": "c7ea67a5-ffa2-455e-8d82-dc1f1f042f75",
       "detail": "-  Entrega reconocimiento\n- Avances Gestión de la Innovación",
       "dueDate": "2026-08-25",
-      "order": 170,
+      "order": 150,
       "createdAt": "2026-08-18T13:33:59.634Z",
       "title": "Sesión reconocimientos Foco Reto Producto",
       "section": "programas",
@@ -247,7 +247,7 @@
       "id": "61b4ec23-91fb-464d-bbcb-c5656ecab7f3",
       "detail": "Desarrollar con los embajadores una sesión de reto para dar solución a un reto estratégico.",
       "dueDate": "2026-09-11",
-      "order": 180,
+      "order": 160,
       "createdAt": "2026-08-18T13:38:31.676Z",
       "title": "Reto Cultura: Embajadores",
       "section": "programas",
@@ -259,7 +259,7 @@
       "id": "02ae9fb2-c9e5-447a-922a-c42d41d87cc3",
       "detail": "",
       "dueDate": "2026-09-29",
-      "order": 200,
+      "order": 170,
       "createdAt": "2026-08-18T13:39:40.815Z",
       "title": "Primera sesión formación: embajadores",
       "section": "programas",
@@ -271,7 +271,7 @@
       "id": "1a31b743-2628-4177-8cac-60dd058fabf9",
       "detail": "- Conexión y entrega de las ideas Podio 2025 que ingresarían a discovery",
       "dueDate": "2026-08-24",
-      "order": 190,
+      "order": 50,
       "createdAt": "2026-08-18T13:42:46.032Z",
       "title": "Activarnos con Edwin Tribu Fenix",
       "section": "ideas2025",
