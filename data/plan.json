@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-18T13:42:47.135Z",
+  "updatedAt": "2026-08-18T13:45:02.782Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -277,6 +277,18 @@
       "section": "ideas2025",
       "owner": "ambos",
       "priority": "alta",
+      "status": "todo"
+    },
+    {
+      "id": "55842dc9-b760-4af6-8c6f-aab9f3b44625",
+      "detail": "",
+      "dueDate": "2026-08-18",
+      "order": 210,
+      "createdAt": "2026-08-18T13:45:01.670Z",
+      "title": "Entrega a Ana Montoya del Reconocimiento 2025",
+      "section": "mas",
+      "owner": "laura",
+      "priority": "media",
       "status": "todo"
     }
   ]
