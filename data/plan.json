@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-18T18:08:30.868Z",
+  "updatedAt": "2026-08-18T18:08:42.530Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -12,7 +12,7 @@
       "priority": "alta",
       "status": "todo",
       "dueDate": "",
-      "order": 10,
+      "order": 20,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -24,7 +24,7 @@
       "priority": "alta",
       "status": "todo",
       "dueDate": "",
-      "order": 30,
+      "order": 40,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -36,7 +36,7 @@
       "priority": "media",
       "status": "todo",
       "dueDate": "",
-      "order": 40,
+      "order": 50,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -199,7 +199,7 @@
       "id": "de95f443-d712-40a1-ab2a-60aac8d1dd70",
       "detail": "Esta comunicación debe construirse con los siguientes aspectos:\n\n1. Video donde se muestre como se hacía antes y como se hace ahora con la implementación \n2. Propuesta de guion: intro, explicación de cada uno de los casos + idea innovadora, llamado a la acción.",
       "dueDate": "",
-      "order": 20,
+      "order": 30,
       "createdAt": "2026-08-14T16:23:34.415Z",
       "title": "Video casos de éxito: implementado ya el área",
       "section": "mas",
@@ -271,7 +271,7 @@
       "id": "1a31b743-2628-4177-8cac-60dd058fabf9",
       "detail": "- Conexión y entrega de las ideas Podio 2025 que ingresarían a discovery",
       "dueDate": "2026-08-24",
-      "order": 50,
+      "order": 10,
       "createdAt": "2026-08-18T13:42:46.032Z",
       "title": "Activarnos con Edwin Tribu Fenix",
       "section": "ideas2025",
