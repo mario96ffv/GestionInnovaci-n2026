@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-18T13:38:32.780Z",
+  "updatedAt": "2026-08-18T13:39:41.918Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -262,6 +262,18 @@
       "order": 180,
       "createdAt": "2026-08-18T13:38:31.676Z",
       "title": "Reto Cultura: Embajadores",
+      "section": "programas",
+      "owner": "laura",
+      "priority": "media",
+      "status": "todo"
+    },
+    {
+      "id": "02ae9fb2-c9e5-447a-922a-c42d41d87cc3",
+      "detail": "",
+      "dueDate": "2026-09-29",
+      "order": 190,
+      "createdAt": "2026-08-18T13:39:40.815Z",
+      "title": "Primera sesión formación: embajadores",
       "section": "programas",
       "owner": "laura",
       "priority": "media",
