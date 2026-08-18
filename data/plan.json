@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-18T18:08:24.178Z",
+  "updatedAt": "2026-08-18T18:08:26.234Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -259,7 +259,7 @@
       "id": "02ae9fb2-c9e5-447a-922a-c42d41d87cc3",
       "detail": "",
       "dueDate": "2026-09-29",
-      "order": 190,
+      "order": 200,
       "createdAt": "2026-08-18T13:39:40.815Z",
       "title": "Primera sesión formación: embajadores",
       "section": "programas",
@@ -271,7 +271,7 @@
       "id": "1a31b743-2628-4177-8cac-60dd058fabf9",
       "detail": "- Conexión y entrega de las ideas Podio 2025 que ingresarían a discovery",
       "dueDate": "2026-08-24",
-      "order": 200,
+      "order": 190,
       "createdAt": "2026-08-18T13:42:46.032Z",
       "title": "Activarnos con Edwin Tribu Fenix",
       "section": "ideas2025",
