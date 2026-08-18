@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-18T13:34:00.736Z",
+  "updatedAt": "2026-08-18T13:38:32.780Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -253,6 +253,18 @@
       "section": "programas",
       "owner": "laura",
       "priority": "alta",
+      "status": "todo"
+    },
+    {
+      "id": "61b4ec23-91fb-464d-bbcb-c5656ecab7f3",
+      "detail": "Desarrollar con los embajadores una sesión de reto para dar solución a un reto estratégico.",
+      "dueDate": "2026-09-11",
+      "order": 180,
+      "createdAt": "2026-08-18T13:38:31.676Z",
+      "title": "Reto Cultura: Embajadores",
+      "section": "programas",
+      "owner": "laura",
+      "priority": "media",
       "status": "todo"
     }
   ]
