@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-18T19:42:22.284Z",
+  "updatedAt": "2026-08-19T13:15:40.299Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -300,6 +300,18 @@
       "title": "Revisión por parte de GIRO: ideas semana de la innovación",
       "section": "ideas2026",
       "owner": "ambos",
+      "priority": "alta",
+      "status": "doing"
+    },
+    {
+      "id": "ed36177b-f67b-4479-bda6-e62d6cfae3f9",
+      "detail": "",
+      "dueDate": "2026-08-21",
+      "order": 50,
+      "createdAt": "2026-08-19T13:15:39.188Z",
+      "title": "Gestión de reconocimientos: Embajadoras Geranios",
+      "section": "mas",
+      "owner": "mario",
       "priority": "alta",
       "status": "doing"
     }
