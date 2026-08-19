@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-19T13:16:16.781Z",
+  "updatedAt": "2026-08-19T13:16:42.602Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -325,6 +325,18 @@
       "section": "mas",
       "owner": "mario",
       "priority": "media",
+      "status": "doing"
+    },
+    {
+      "id": "4d5c2c78-b967-4965-bc04-8c216fa61b06",
+      "detail": "",
+      "dueDate": "2026-08-20",
+      "order": 70,
+      "createdAt": "2026-08-19T13:16:41.490Z",
+      "title": "Gestión de Reconocimiento: Victor Manuel",
+      "section": "mas",
+      "owner": "mario",
+      "priority": "alta",
       "status": "doing"
     }
   ]
