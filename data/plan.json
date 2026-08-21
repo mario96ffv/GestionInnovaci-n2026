@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-21T18:24:18.596Z",
+  "updatedAt": "2026-08-21T18:24:36.098Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -306,7 +306,7 @@
     {
       "id": "ed36177b-f67b-4479-bda6-e62d6cfae3f9",
       "detail": "",
-      "dueDate": "2026-08-21",
+      "dueDate": "2026-08-25",
       "order": 50,
       "createdAt": "2026-08-19T13:15:39.188Z",
       "title": "Gestión de reconocimientos: Embajadoras Geranios",
