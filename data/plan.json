@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-21T18:23:28.647Z",
+  "updatedAt": "2026-08-21T18:23:41.124Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -318,7 +318,7 @@
     {
       "id": "3d3e791e-448f-426c-b34d-d1891c59cc37",
       "detail": "",
-      "dueDate": "2026-08-20",
+      "dueDate": "2026-08-25",
       "order": 60,
       "createdAt": "2026-08-19T13:16:15.669Z",
       "title": "Gestión de Reconocimientos: Retos Johanna y Daniel",
