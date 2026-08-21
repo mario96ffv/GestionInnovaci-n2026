@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-21T18:24:36.098Z",
+  "updatedAt": "2026-08-21T18:24:45.957Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -179,7 +179,7 @@
       "owner": "laura",
       "priority": "media",
       "status": "todo",
-      "dueDate": "2026-08-21",
+      "dueDate": "",
       "order": 10,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
