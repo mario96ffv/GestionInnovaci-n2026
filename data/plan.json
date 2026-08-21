@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-21T18:23:41.124Z",
+  "updatedAt": "2026-08-21T18:24:18.596Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -329,7 +329,7 @@
     },
     {
       "id": "4d5c2c78-b967-4965-bc04-8c216fa61b06",
-      "detail": "",
+      "detail": "Solicitud de formación realizada y colaborador informado por correo",
       "dueDate": "2026-08-20",
       "order": 10,
       "createdAt": "2026-08-19T13:16:41.490Z",
