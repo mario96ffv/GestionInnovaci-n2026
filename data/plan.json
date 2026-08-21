@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-21T18:21:38.140Z",
+  "updatedAt": "2026-08-21T18:21:41.445Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -11,7 +11,7 @@
       "owner": "mario",
       "priority": "alta",
       "status": "doing",
-      "dueDate": "",
+      "dueDate": "2026-08-26",
       "order": 0,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
