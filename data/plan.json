@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-19T13:16:42.602Z",
+  "updatedAt": "2026-08-21T18:20:49.772Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -10,9 +10,9 @@
       "detail": "",
       "owner": "mario",
       "priority": "alta",
-      "status": "todo",
+      "status": "doing",
       "dueDate": "",
-      "order": 30,
+      "order": 0,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -156,7 +156,7 @@
       "priority": "alta",
       "status": "doing",
       "dueDate": "2026-08-24",
-      "order": 20,
+      "order": 30,
       "createdAt": "2026-08-14T16:07:51.754Z"
     },
     {
@@ -223,7 +223,7 @@
       "id": "2fe40332-3112-4bb9-af04-3e6c7adb7f49",
       "detail": "Taller donde se formarán los participantes en el uso de sus herramientas disponibles para solucionar problemas de su área, la idea es que sepan que esto también es innovación y pueden despertar la creatividad a servicio de Sistecrédito.",
       "dueDate": "2026-08-28",
-      "order": 0,
+      "order": 10,
       "createdAt": "2026-08-18T13:27:52.899Z",
       "title": "Preparación Taller GIRO: ¿Cómo innovar y hacerlo posible desde mi área mediante la IA?",
       "section": "programas",
@@ -295,7 +295,7 @@
       "id": "6f13c374-1390-49e8-a22c-86b65959bd1e",
       "detail": "- Validación inicial de las primeras 5 ideas",
       "dueDate": "2026-08-25",
-      "order": 10,
+      "order": 20,
       "createdAt": "2026-08-18T13:46:45.182Z",
       "title": "Revisión por parte de GIRO: ideas semana de la innovación",
       "section": "ideas2026",
