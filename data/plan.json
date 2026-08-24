@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-24T12:28:10.930Z",
+  "updatedAt": "2026-08-24T14:14:30.878Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -33,7 +33,7 @@
       "title": "Buscar sinergia entre Red de aliados (Eddy) e hiperpersonalización",
       "detail": "",
       "owner": "laura",
-      "priority": "media",
+      "priority": "alta",
       "status": "todo",
       "dueDate": "",
       "order": 60,
