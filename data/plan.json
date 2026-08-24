@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-24T12:27:28.134Z",
+  "updatedAt": "2026-08-24T12:28:10.930Z",
   "updatedBy": "Mario",
   "items": [
     {
@@ -210,7 +210,7 @@
     {
       "id": "120b1109-9bd7-493f-9a83-2a22e5e3d5e3",
       "detail": "Incluir el llamado a la acción: como estamos en la implementación de las ideas, una manera rápida de hacerlo es hacer uso de los recursos que tienen algunas áreas mediante inteligencia artificial y si no se puede escalar a equipos que lo hacen posible pero teniendo en cuenta los tiempos de espera en la priorización y backlogs de trabajo.",
-      "dueDate": "2026-08-21",
+      "dueDate": "2026-08-28",
       "order": 50,
       "createdAt": "2026-08-14T16:28:04.138Z",
       "title": "Piezas de Comunicación: general y personalizada de ideas innovadoras paso a la acción",
