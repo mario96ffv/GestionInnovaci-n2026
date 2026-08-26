@@ -2,13 +2,19 @@
 'use strict';
 
 /* ============================================================
-   CONFIG / CONSTANTS
+   SUPABASE CONFIG
    ============================================================ */
-const CONFIG_KEY = 'giro_plan_gh_config_v1';8
-const CACHE_KEY  = 'giro_plan_cache_v1';
+const SUPABASE_URL = 'https://esehsrguiinyeqydwnbd.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_hgn6sbfaY3bcrNxr7migew_7wIOwiGm';
+const TABLE = 'plan_items';
+const CACHE_KEY = 'giro_plan_cache_v2';
 const IDENTITY_KEY = 'giro_plan_identity_v1';
-const API_BASE = 'https://api.github.com';
 
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+/* ============================================================
+   CONSTANTS
+   ============================================================ */
 const SECTIONS = {
   ideas2025: { label:'Ideas 2025', color:'#3B5B7A' },
   ideas2026: { label:'Ideas 2026', color:'#3E7A72' },
@@ -35,36 +41,41 @@ const STATUSES = [
   { key:'done',  label:'Hecho' }
 ];
 
-function seedItems(){
-  const rows = [
-    ['ideas2025','Coordinar con Arquitectura de Datos el contexto del "cerebro MCP" para Cristian Seguro (IA mundo Siste)','mario','alta','todo'],
-    ['ideas2025','Activar Discovery de Sistecrédito Smart con tribu Fénix y alinear sinergia con hiperpersonalización','ambos','alta','todo'],
-    ['ideas2025','Buscar sinergia entre Red de aliados (Eddy) e hiperpersonalización','laura','media','todo'],
-    ['ideas2025','Activar Discovery de Gamificación (Caro Munera) con tribu Fénix','ambos','alta','todo'],
-    ['ideas2025','Validar continuidad de IA vinculación (Lucas) y promover su finalización','mario','alta','todo'],
-    ['ideas2025','Activar Discovery de +Valor al día (Jahna) con tribu Fénix','ambos','alta','todo'],
-    ['ideas2025','Organizar y entregar las 20 ideas fuera del podio a los responsables ya identificados','ambos','media','todo'],
-    ['ideas2025','Dar contexto a Sandra Nanclares sobre el proyecto Embajador / Sisteviajes (aliados en flotas de transporte terrestre)','laura','media','todo'],
-    ['ideas2026','Formalizar con Disruplab su rol de comité asesor para calificar ideas (app portafolio + semana de innovación + For+)','mario','alta','todo'],
-    ['ideas2026','Optimizar los tiempos de reunión del comité de calificación','ambos','media','todo'],
-    ['ideas2026','Preparar y llevar el top de ideas 2026 a Presidencia','mario','alta','todo'],
-    ['gobierno','Diseñar el modelo de gobierno transversal de innovación, en paralelo a la ejecución','mario','alta','todo'],
-    ['gobierno','Preparar el comparativo de avance agosto → diciembre para la medición del equipo','ambos','alta','todo'],
-    ['programas','Relanzar embajadores GIRO alrededor de "¿cómo mejoro mi área?", con recursos internos','laura','media','todo'],
-    ['programas','Confirmar la no participación en el ranking ANDI este ciclo','mario','baja','todo'],
-    ['programas','Agendar y preparar la sesión de calificación de ideas en Disruplab (rol de ideadores)','ambos','media','todo'],
-    ['programas','Cerrar el chat "Foco innovación y Sostenibilidad"','laura','baja','todo'],
-    ['mas','Mantener el foco en la implementación de ideas activas','ambos','media','todo'],
-    ['mas','Diseñar el mensaje para visibilizar que cualquiera puede resolver con GPT/Claude antes de pasar a backlog','mario','alta','todo'],
-    ['mas','Definir cómo los Retos van a documentar los casos de uso GPT/Claude ya implementados en las áreas','ambos','alta','todo'],
-    ['mas','Recopilar y comunicar casos de éxito ya implementados (ej. app de Natalia Betancur en Licenciamientos)','laura','media','todo']
+/* ============================================================
+   MIGRATION DATA — tu tablero real tal como estaba en GitHub
+   Solo se usa una vez, si la tabla en Supabase llega vacía.
+   ============================================================ */
+function migrationItems(){
+  return [
+    { id:'seed-0', section:'ideas2025', title:'Coordinar con Arquitectura de Datos el contexto del "cerebro MCP" para Cristian Seguro (IA mundo Siste)', detail:'', owner:'mario', priority:'alta', status:'doing', dueDate:'2026-08-26', order:10, createdAt:'2026-08-14T16:07:51.754Z' },
+    { id:'seed-1', section:'ideas2025', title:'Activar Discovery de Sistecrédito Smart con tribu Fénix y alinear sinergia con hiperpersonalización', detail:'', owner:'laura', priority:'alta', status:'todo', dueDate:'', order:50, createdAt:'2026-08-14T16:07:51.754Z' },
+    { id:'seed-2', section:'ideas2025', title:'Buscar sinergia entre Red de aliados (Eddy) e hiperpersonalización', detail:'', owner:'laura', priority:'alta', status:'todo', dueDate:'', order:60, createdAt:'2026-08-14T16:07:51.754Z' },
+    { id:'seed-3', section:'ideas2025', title:'Activar Discovery de Gamificación (Caro Munera) con tribu Fénix', detail:'', owner:'laura', priority:'alta', status:'todo', dueDate:'', order:70, createdAt:'2026-08-14T16:07:51.754Z' },
+    { id:'seed-4', section:'ideas2025', title:'Validar continuidad de IA vinculación (Lucas) y promover su finalización', detail:'', owner:'mario', priority:'alta', status:'todo', dueDate:'', order:80, createdAt:'2026-08-14T16:07:51.754Z' },
+    { id:'seed-5', section:'ideas2025', title:'Activar Discovery de +Valor al día (Jahna) con tribu Fénix', detail:'', owner:'laura', priority:'alta', status:'todo', dueDate:'', order:90, createdAt:'2026-08-14T16:07:51.754Z' },
+    { id:'seed-6', section:'ideas2025', title:'Organizar y entregar las 20 ideas fuera del podio a los responsables ya identificados', detail:'', owner:'ambos', priority:'media', status:'todo', dueDate:'', order:100, createdAt:'2026-08-14T16:07:51.754Z' },
+    { id:'seed-7', section:'ideas2025', title:'Dar contexto a Sandra Nanclares sobre el proyecto Embajador / Sisteviajes (aliados en flotas de transporte terrestre)', detail:'', owner:'mario', priority:'media', status:'todo', dueDate:'', order:110, createdAt:'2026-08-14T16:07:51.754Z' },
+    { id:'seed-8', section:'ideas2026', title:'Formalizar con Disruplab su rol de comité asesor para calificar ideas (app portafolio + semana de innovación + For+)', detail:'', owner:'mario', priority:'alta', status:'todo', dueDate:'', order:0, createdAt:'2026-08-14T16:07:51.754Z' },
+    { id:'seed-10', section:'ideas2026', title:'Preparar y llevar el top de ideas 2026 a Presidencia', detail:'', owner:'mario', priority:'alta', status:'todo', dueDate:'', order:120, createdAt:'2026-08-14T16:07:51.754Z' },
+    { id:'seed-11', section:'gobierno', title:'Diseñar el modelo de gobierno transversal de innovación, en paralelo a la ejecución', detail:'', owner:'mario', priority:'alta', status:'todo', dueDate:'', order:130, createdAt:'2026-08-14T16:07:51.754Z' },
+    { id:'seed-12', section:'gobierno', title:'Preparar el comparativo de avance agosto → diciembre para la medición del equipo', detail:'', owner:'ambos', priority:'alta', status:'todo', dueDate:'', order:140, createdAt:'2026-08-14T16:07:51.754Z' },
+    { id:'seed-13', section:'programas', title:'Realizar convocatoria personal a cada embajador', detail:'', owner:'ambos', priority:'alta', status:'doing', dueDate:'2026-08-28', order:50, createdAt:'2026-08-14T16:07:51.754Z' },
+    { id:'seed-14', section:'programas', title:'Confirmar la no participación en el ranking ANDI este ciclo', detail:'', owner:'mario', priority:'baja', status:'done', dueDate:'', order:0, createdAt:'2026-08-14T16:07:51.754Z' },
+    { id:'seed-20', section:'mas', title:'Recopilar casos de éxito ya implementados: ejemplo caso Natalia Betancur + People Ops + Idea Innovadora', detail:'1. Entender el caso de uso de Natalia, el alcance de la solución y el valor que genera\n\n2. Mapear por los menos 2 casos de People Ops para iniciar comunicando los de nuestra dirección.\n\n3. Al menos un caso implementado de idea innovadora', owner:'laura', priority:'media', status:'todo', dueDate:'', order:10, createdAt:'2026-08-14T16:07:51.754Z' },
+    { id:'7ed8503c-f62e-48a6-b252-0422fa665aba', section:'programas', title:'Realizar contexto: reto edu financiera', detail:'- Presentar la metodología y ajustar para iniciar el plan de trabajo', owner:'mario', priority:'media', status:'todo', dueDate:'2026-08-24', order:150, createdAt:'2026-08-14T16:17:27.425Z' },
+    { id:'de95f443-d712-40a1-ab2a-60aac8d1dd70', section:'mas', title:'Video casos de éxito: implementado ya el área', detail:'Esta comunicación debe construirse con los siguientes aspectos:\n\n1. Video donde se muestre como se hacía antes y como se hace ahora con la implementación \n2. Propuesta de guion: intro, explicación de cada uno de los casos + idea innovadora, llamado a la acción.', owner:'laura', priority:'media', status:'todo', dueDate:'', order:40, createdAt:'2026-08-14T16:23:34.415Z' },
+    { id:'120b1109-9bd7-493f-9a83-2a22e5e3d5e3', section:'mas', title:'Piezas de Comunicación: general y personalizada de ideas innovadoras paso a la acción', detail:'Incluir el llamado a la acción: como estamos en la implementación de las ideas, una manera rápida de hacerlo es hacer uso de los recursos que tienen algunas áreas mediante inteligencia artificial y si no se puede escalar a equipos que lo hacen posible pero teniendo en cuenta los tiempos de espera en la priorización y backlogs de trabajo.', owner:'laura', priority:'alta', status:'doing', dueDate:'2026-08-28', order:60, createdAt:'2026-08-14T16:28:04.138Z' },
+    { id:'2fe40332-3112-4bb9-af04-3e6c7adb7f49', section:'programas', title:'Preparación Taller GIRO: ¿Cómo innovar y hacerlo posible desde mi área mediante la IA?', detail:'Taller donde se formarán los participantes en el uso de sus herramientas disponibles para solucionar problemas de su área, la idea es que sepan que esto también es innovación y pueden despertar la creatividad a servicio de Sistecrédito.', owner:'laura', priority:'alta', status:'doing', dueDate:'2026-08-28', order:30, createdAt:'2026-08-18T13:27:52.899Z' },
+    { id:'c7ea67a5-ffa2-455e-8d82-dc1f1f042f75', section:'programas', title:'Sesión reconocimientos Foco Reto Producto', detail:'Entrega reconocimiento: Premio + diploma + Refri\nAvances Gestión de la Innovación con Foco Producto', owner:'laura', priority:'alta', status:'doing', dueDate:'2026-08-25', order:20, createdAt:'2026-08-18T13:33:59.634Z' },
+    { id:'61b4ec23-91fb-464d-bbcb-c5656ecab7f3', section:'programas', title:'Reto Cultura: Embajadores', detail:'Desarrollar con los embajadores una sesión de reto para dar solución a un reto estratégico', owner:'laura', priority:'media', status:'todo', dueDate:'2026-09-11', order:170, createdAt:'2026-08-18T13:38:31.676Z' },
+    { id:'02ae9fb2-c9e5-447a-922a-c42d41d87cc3', section:'programas', title:'Primera sesión formación: embajadores', detail:'', owner:'laura', priority:'media', status:'todo', dueDate:'2026-09-29', order:180, createdAt:'2026-08-18T13:39:40.815Z' },
+    { id:'1a31b743-2628-4177-8cac-60dd058fabf9', section:'ideas2025', title:'Activarnos con Edwin Tribu Fenix', detail:'- Conexión y entrega de las ideas Podio 2025 que ingresarían a discovery', owner:'ambos', priority:'alta', status:'doing', dueDate:'2026-08-24', order:0, createdAt:'2026-08-18T13:42:46.032Z' },
+    { id:'55842dc9-b760-4af6-8c6f-aab9f3b44625', section:'mas', title:'Entrega a Ana Montoya del Reconocimiento 2025', detail:'', owner:'laura', priority:'media', status:'done', dueDate:'2026-08-18', order:20, createdAt:'2026-08-18T13:45:01.670Z' },
+    { id:'6f13c374-1390-49e8-a22c-86b65959bd1e', section:'ideas2026', title:'Revisión por parte de GIRO: ideas semana de la innovación', detail:'- Validación inicial de las primeras 5 ideas', owner:'ambos', priority:'alta', status:'doing', dueDate:'2026-08-25', order:40, createdAt:'2026-08-18T13:46:45.182Z' },
+    { id:'ed36177b-f67b-4479-bda6-e62d6cfae3f9', section:'mas', title:'Gestión de reconocimientos: Embajadoras Geranios', detail:'', owner:'mario', priority:'alta', status:'doing', dueDate:'2026-08-25', order:70, createdAt:'2026-08-19T13:15:39.188Z' },
+    { id:'3d3e791e-448f-426c-b34d-d1891c59cc37', section:'mas', title:'Gestión de Reconocimientos: Retos Johanna y Daniel', detail:'', owner:'mario', priority:'media', status:'doing', dueDate:'2026-08-25', order:80, createdAt:'2026-08-19T13:16:15.669Z' },
+    { id:'4d5c2c78-b967-4965-bc04-8c216fa61b06', section:'mas', title:'Gestión de Reconocimiento: Victor Manuel', detail:'Solicitud de formación realizada y colaborador informado por correo', owner:'mario', priority:'alta', status:'done', dueDate:'2026-08-20', order:10, createdAt:'2026-08-19T13:16:41.490Z' }
   ];
-  const now = new Date().toISOString();
-  return rows.map((r,i)=>({
-    id: 'seed-'+i,
-    section:r[0], title:r[1], detail:'', owner:r[2], priority:r[3], status:r[4],
-    dueDate:'', order:i*10, createdAt:now
-  }));
 }
 
 /* ============================================================
@@ -72,18 +83,11 @@ function seedItems(){
    ============================================================ */
 let state = {
   items: [],
-  sha: null,
-  syncing: false,
   online: false,
-  configured: false,
-  dirty: false,
   lastSyncedAt: null,
   activeFilters: new Set(Object.keys(SECTIONS)),
-  editingId: null,
-  pendingStatus: 'todo'
+  editingId: null
 };
-
-let config = { token:'', owner:'', repo:'', branch:'main', path:'data/plan.json' };
 
 /* ============================================================
    UTILS
@@ -91,10 +95,6 @@ let config = { token:'', owner:'', repo:'', branch:'main', path:'data/plan.json'
 function uid(){
   if(window.crypto && crypto.randomUUID) return crypto.randomUUID();
   return 'id-'+Date.now()+'-'+Math.random().toString(16).slice(2);
-}
-function debounce(fn, ms){
-  let t;
-  return function(...args){ clearTimeout(t); t = setTimeout(()=>fn.apply(null,args), ms); };
 }
 function fmtDate(d){
   if(!d) return '';
@@ -108,147 +108,54 @@ function daysUntil(d){
   const today = new Date(); today.setHours(0,0,0,0);
   return Math.round((dt-today)/86400000);
 }
-function utf8ToB64(str){
-  const bytes = new TextEncoder().encode(str);
-  let bin='';
-  bytes.forEach(b => bin += String.fromCharCode(b));
-  return btoa(bin);
-}
-function b64ToUtf8(b64){
-  const bin = atob(b64.replace(/\n/g,''));
-  const bytes = new Uint8Array(bin.length);
-  for(let i=0;i<bin.length;i++) bytes[i] = bin.charCodeAt(i);
-  return new TextDecoder().decode(bytes);
-}
 function el(tag, cls, text){
   const e = document.createElement(tag);
   if(cls) e.className = cls;
   if(text!=null) e.textContent = text;
   return e;
 }
-
-/* ============================================================
-   CONFIG / IDENTITY
-   ============================================================ */
-function loadConfig(){
-  try{
-    const raw = localStorage.getItem(CONFIG_KEY);
-    if(raw) config = Object.assign(config, JSON.parse(raw));
-  }catch(e){}
-  const params = new URLSearchParams(location.search);
-  ['owner','repo','branch','path'].forEach(k=>{
-    const v = params.get(k);
-    if(v) config[k] = v;
-  });
-  persistConfig();
-}
-function persistConfig(){
-  try{ localStorage.setItem(CONFIG_KEY, JSON.stringify(config)); }catch(e){}
-}
-function isReadConfigured(){ return !!(config.owner && config.repo); }
-function isWriteConfigured(){ return !!(config.owner && config.repo && config.token); }
-
 function loadIdentity(){ return localStorage.getItem(IDENTITY_KEY) || ''; }
 function saveIdentity(v){ try{ localStorage.setItem(IDENTITY_KEY, v); }catch(e){} }
+function canEdit(){ const id = loadIdentity(); return id === 'Mario' || id === 'Laura'; }
+function updateEditModeUI(){ document.body.classList.toggle('read-only', !canEdit()); }
 
 /* ============================================================
-   REMOTE SYNC (GitHub Contents API)
+   ROW <-> ITEM MAPPING (Supabase usa snake_case)
    ============================================================ */
-function ghHeaders(json){
-  const h = {
-    'Accept': 'application/vnd.github+json',
-    'X-GitHub-Api-Version': '2022-11-28'
+function rowToItem(row){
+  return {
+    id: row.id,
+    title: row.title,
+    detail: row.detail || '',
+    section: row.section,
+    owner: row.owner,
+    priority: row.priority,
+    status: row.status,
+    dueDate: row.due_date || '',
+    order: row.sort_order != null ? Number(row.sort_order) : 0,
+    createdAt: row.created_at || new Date().toISOString()
   };
-  if(config.token) h['Authorization'] = 'Bearer ' + config.token;
-  if(json) h['Content-Type'] = 'application/json';
-  return h;
 }
-function contentsUrl(withRef){
-  const base = `${API_BASE}/repos/${encodeURIComponent(config.owner)}/${encodeURIComponent(config.repo)}/contents/${config.path.split('/').map(encodeURIComponent).join('/')}`;
-  return withRef ? base + '?ref=' + encodeURIComponent(config.branch) : base;
+function itemToRow(item){
+  return {
+    id: item.id,
+    title: item.title,
+    detail: item.detail || '',
+    section: item.section,
+    owner: item.owner,
+    priority: item.priority,
+    status: item.status,
+    due_date: item.dueDate || '',
+    sort_order: item.order,
+    created_at: item.createdAt
+  };
 }
 
-async function fetchRemote(){
-  if(!isReadConfigured()) return {ok:false, reason:'no-config'};
-  try{
-    const res = await fetch(contentsUrl(true), { headers: ghHeaders(false) });
-    if(res.status === 200){
-      const data = await res.json();
-      const json = JSON.parse(b64ToUtf8(data.content));
-      state.items = Array.isArray(json.items) ? json.items : [];
-      state.sha = data.sha;
-      state.online = true;
-      state.lastSyncedAt = new Date();
-      cacheLocal();
-      return {ok:true};
-    } else if(res.status === 404){
-      state.sha = null;
-      state.online = true;
-      return {ok:true, notFound:true};
-    } else if(res.status === 401 || res.status === 403){
-      state.online = false;
-      return {ok:false, reason:'auth'};
-    } else {
-      state.online = false;
-      return {ok:false, reason:'error', status:res.status};
-    }
-  }catch(e){
-    state.online = false;
-    return {ok:false, reason:'network'};
-  }
-}
-
-async function saveRemote(retry){
-  if(retry === undefined) retry = true;
-  if(!isWriteConfigured()){ cacheLocal(); renderSyncStatus(); return; }
-  state.syncing = true; renderSyncStatus();
-  const payload = {
-    version: 1,
-    updatedAt: new Date().toISOString(),
-    updatedBy: loadIdentity() || 'desconocido',
-    items: state.items
-  };
-  const body = {
-    message: 'chore: actualizar plan de trabajo (' + new Date().toLocaleString('es-CO') + ')',
-    content: utf8ToB64(JSON.stringify(payload, null, 2)),
-    branch: config.branch
-  };
-  if(state.sha) body.sha = state.sha;
-  try{
-    const res = await fetch(contentsUrl(false), { method:'PUT', headers: ghHeaders(true), body: JSON.stringify(body) });
-    if(res.status === 200 || res.status === 201){
-      const data = await res.json();
-      state.sha = data.content.sha;
-      state.online = true;
-      state.lastSyncedAt = new Date();
-      state.dirty = false;
-      cacheLocal();
-      hideBanner();
-    } else if(res.status === 409 && retry){
-      const r = await fetchRemote();
-      if(r.ok){ state.syncing = false; await saveRemote(false); return; }
-    } else if(res.status === 401 || res.status === 403){
-      state.online = false;
-      showBanner('El token no es válido o no tiene permiso de escritura sobre el repositorio. Tus cambios quedaron guardados solo en este navegador.');
-    } else if(res.status === 404){
-      state.online = false;
-      showBanner('No se encontró el repositorio o la ruta configurada. Revisa la configuración de sincronización.');
-    } else {
-      state.online = false;
-      showBanner('No se pudo guardar en GitHub (código ' + res.status + '). Tus cambios quedaron guardados solo en este navegador.');
-    }
-  }catch(e){
-    state.online = false;
-    showBanner('Sin conexión con GitHub. Tus cambios quedaron guardados solo en este navegador y se reintentará más adelante.');
-  }
-  state.syncing = false;
-  cacheLocal();
-  renderSyncStatus();
-}
-const scheduleSave = debounce(()=>saveRemote(true), 1100);
-
+/* ============================================================
+   LOCAL CACHE (respaldo offline, no reemplaza a Supabase)
+   ============================================================ */
 function cacheLocal(){
-  try{ localStorage.setItem(CACHE_KEY, JSON.stringify({ sha: state.sha, items: state.items })); }catch(e){}
+  try{ localStorage.setItem(CACHE_KEY, JSON.stringify(state.items)); }catch(e){}
 }
 function loadCache(){
   try{
@@ -269,45 +176,98 @@ function showBanner(msg){
 function hideBanner(){
   document.getElementById('banner').classList.remove('show');
 }
-function bannerForFetchFailure(r){
-  if(!r || r.ok) return;
-  if(r.reason==='auth') showBanner('El token no es válido o no tiene permiso de lectura sobre el repositorio. Mostrando la última copia guardada en este navegador.');
-  else if(r.reason==='network') showBanner('Sin conexión con GitHub. Mostrando la última copia guardada en este navegador.');
-  else if(r.reason==='error') showBanner('No se pudo leer el archivo en GitHub (código ' + r.status + '). Mostrando la última copia guardada en este navegador.');
+
+/* ============================================================
+   REMOTE: CARGA INICIAL + SEED ÚNICO
+   ============================================================ */
+async function loadAll(){
+  try{
+    const { data, error } = await supabase.from(TABLE).select('*').order('sort_order', {ascending:true});
+    if(error){
+      state.online = false;
+      showBanner('No se pudo conectar con la base de datos: ' + error.message + '. Mostrando la última copia guardada en este navegador.');
+      state.items = loadCache() || [];
+      return;
+    }
+    state.online = true;
+    state.items = (data || []).map(rowToItem);
+    cacheLocal();
+  }catch(e){
+    state.online = false;
+    showBanner('Sin conexión con la base de datos. Mostrando la última copia guardada en este navegador.');
+    state.items = loadCache() || [];
+  }
+}
+
+async function ensureSeeded(){
+  if(state.items.length > 0 || !state.online) return;
+  const seed = migrationItems();
+  const { error } = await supabase.from(TABLE).insert(seed.map(itemToRow));
+  if(error){
+    showBanner('No se pudo inicializar la base de datos con las tarjetas migradas: ' + error.message);
+    return;
+  }
+  state.items = seed;
+  cacheLocal();
 }
 
 /* ============================================================
-   CRUD
+   CRUD (cada acción escribe directo en Supabase)
    ============================================================ */
-function addItem(data){
+function refreshViews(){ renderBoard(); renderStats(); }
+
+async function addItem(data){
   const maxOrder = state.items.filter(i=>i.status===data.status).reduce((m,i)=>Math.max(m,i.order),-10);
-  state.items.push(Object.assign({
-    id: uid(),
-    detail:'', dueDate:'', order: maxOrder+10, createdAt: new Date().toISOString()
-  }, data));
-  afterMutate();
+  const newItem = Object.assign({
+    id: uid(), detail:'', dueDate:'', order: maxOrder+10, createdAt: new Date().toISOString()
+  }, data);
+  state.items.push(newItem);
+  refreshViews();
+  const { error } = await supabase.from(TABLE).insert([itemToRow(newItem)]);
+  if(error) showBanner('No se pudo guardar el nuevo accionable: ' + error.message);
+  else { state.lastSyncedAt = new Date(); hideBanner(); }
+  cacheLocal();
+  renderSyncStatus();
 }
-function updateItem(id, data){
+
+async function updateItem(id, data){
   const item = state.items.find(i=>i.id===id);
   if(!item) return;
   Object.assign(item, data);
-  afterMutate();
+  refreshViews();
+  const { error } = await supabase.from(TABLE).update(itemToRow(item)).eq('id', id);
+  if(error) showBanner('No se pudo guardar el cambio: ' + error.message);
+  else { state.lastSyncedAt = new Date(); hideBanner(); }
+  cacheLocal();
+  renderSyncStatus();
 }
-function deleteItem(id){
+
+async function deleteItem(id){
   state.items = state.items.filter(i=>i.id!==id);
-  afterMutate();
+  refreshViews();
+  const { error } = await supabase.from(TABLE).delete().eq('id', id);
+  if(error) showBanner('No se pudo borrar en la base de datos: ' + error.message);
+  else { state.lastSyncedAt = new Date(); hideBanner(); }
+  cacheLocal();
+  renderSyncStatus();
 }
-function moveItem(id, newStatus, newIndexInColumn){
+
+async function moveItem(id, newStatus, newIndexInColumn){
   const item = state.items.find(i=>i.id===id);
   if(!item) return;
   item.status = newStatus;
-  const colItems = state.items.filter(i=>i.status===newStatus && i.id!==id)
-    .sort((a,b)=>a.order-b.order);
+  const colItems = state.items.filter(i=>i.status===newStatus && i.id!==id).sort((a,b)=>a.order-b.order);
   colItems.splice(newIndexInColumn, 0, item);
   colItems.forEach((it,idx)=>{ it.order = idx*10; });
-  afterMutate();
+  refreshViews();
+  const { error } = await supabase.from(TABLE).upsert(colItems.map(itemToRow));
+  if(error) showBanner('No se pudo guardar el nuevo orden: ' + error.message);
+  else { state.lastSyncedAt = new Date(); hideBanner(); }
+  cacheLocal();
+  renderSyncStatus();
 }
-function nudgeItem(id, dir){
+
+async function nudgeItem(id, dir){
   const item = state.items.find(i=>i.id===id);
   if(!item) return;
   const col = state.items.filter(i=>i.status===item.status).sort((a,b)=>a.order-b.order);
@@ -317,14 +277,38 @@ function nudgeItem(id, dir){
   const tmp = col[idx].order;
   col[idx].order = col[swapIdx].order;
   col[swapIdx].order = tmp;
-  afterMutate();
-}
-function afterMutate(){
-  state.dirty = true;
+  refreshViews();
+  const { error } = await supabase.from(TABLE).upsert([col[idx], col[swapIdx]].map(itemToRow));
+  if(error) showBanner('No se pudo guardar el nuevo orden: ' + error.message);
+  else { state.lastSyncedAt = new Date(); hideBanner(); }
   cacheLocal();
-  renderBoard();
-  renderStats();
-  scheduleSave();
+  renderSyncStatus();
+}
+
+/* ============================================================
+   REALTIME — así se ven los cambios de Laura/Mario en vivo
+   ============================================================ */
+function subscribeRealtime(){
+  supabase
+    .channel('plan_items_changes')
+    .on('postgres_changes', { event:'*', schema:'public', table: TABLE }, (payload)=>{
+      if(payload.eventType === 'INSERT' || payload.eventType === 'UPDATE'){
+        const incoming = rowToItem(payload.new);
+        const idx = state.items.findIndex(i=>i.id===incoming.id);
+        if(idx>=0) state.items[idx] = incoming; else state.items.push(incoming);
+      } else if(payload.eventType === 'DELETE'){
+        state.items = state.items.filter(i=>i.id !== payload.old.id);
+      }
+      cacheLocal();
+      refreshViews();
+      state.lastSyncedAt = new Date();
+      renderSyncStatus();
+    })
+    .subscribe((status)=>{
+      if(status === 'SUBSCRIBED'){ state.online = true; }
+      else if(status === 'CHANNEL_ERROR' || status === 'TIMED_OUT' || status === 'CLOSED'){ state.online = false; }
+      renderSyncStatus();
+    });
 }
 
 /* ============================================================
@@ -334,24 +318,12 @@ function renderSyncStatus(){
   const pill = document.getElementById('syncPill');
   const text = document.getElementById('syncPillText');
   const footer = document.getElementById('lastSyncedFooter');
-  let stateAttr = 'offline', label = 'sin configurar';
-  if(state.syncing){
-    stateAttr = 'saving'; label = 'guardando…';
-  } else if(!isReadConfigured()){
-    stateAttr = 'offline'; label = 'sin configurar';
-  } else if(isWriteConfigured()){
-    if(state.online){ stateAttr = 'synced'; label = 'sincronizado'; }
-    else { stateAttr = 'offline'; label = 'sin conexión'; }
-  } else {
-    if(state.online){ stateAttr = 'synced'; label = 'actualizado (solo lectura)'; }
-    else { stateAttr = 'offline'; label = 'sin conexión'; }
-  }
-  pill.dataset.state = stateAttr;
-  text.textContent = label;
+  pill.dataset.state = state.online ? 'synced' : 'offline';
+  text.textContent = state.online ? 'conectado en vivo' : 'sin conexión';
   if(state.lastSyncedAt){
     footer.textContent = 'Última actualización: ' + state.lastSyncedAt.toLocaleString('es-CO');
   } else {
-    footer.textContent = isReadConfigured() ? 'Aún sin sincronizar' : 'Sincronización no configurada — usa el ícono de ajustes';
+    footer.textContent = 'Conectando…';
   }
 }
 
@@ -359,7 +331,7 @@ function renderMonths(){
   const row = document.getElementById('monthsRow');
   row.innerHTML = '';
   const names = ['Ago','Sep','Oct','Nov','Dic'];
-  const monthIdx = [7,8,9,10,11]; // 0-indexed, Aug=7
+  const monthIdx = [7,8,9,10,11];
   const now = new Date();
   const curMonth = now.getFullYear()===2026 ? now.getMonth() : -1;
   names.forEach((n,i)=>{
@@ -433,20 +405,24 @@ function renderFilters(){
    RENDER: BOARD
    ============================================================ */
 function makeCard(item){
+  const editable = canEdit();
   const card = el('li','card');
-  card.draggable = true;
+  card.draggable = editable;
   card.dataset.id = item.id;
   card.style.borderLeftColor = 'var(--' + (item.priority||'media') + ')';
 
   const top = el('div','card-top');
   const title = el('div','card-title', item.title);
-  const actions = el('div','card-actions');
-  const editBtn = el('button','mini-btn'); editBtn.innerHTML = '✎'; editBtn.title='Editar'; editBtn.type='button';
-  editBtn.addEventListener('click', (e)=>{ e.stopPropagation(); openCardModal(item); });
-  const delBtn = el('button','mini-btn'); delBtn.innerHTML = '✕'; delBtn.title='Eliminar'; delBtn.type='button';
-  delBtn.addEventListener('click', (e)=>{ e.stopPropagation(); if(confirm('¿Eliminar "'+item.title+'"?')) deleteItem(item.id); });
-  actions.appendChild(editBtn); actions.appendChild(delBtn);
-  top.appendChild(title); top.appendChild(actions);
+  top.appendChild(title);
+  if(editable){
+    const actions = el('div','card-actions');
+    const editBtn = el('button','mini-btn'); editBtn.innerHTML = '✎'; editBtn.title='Editar'; editBtn.type='button';
+    editBtn.addEventListener('click', (e)=>{ e.stopPropagation(); openCardModal(item); });
+    const delBtn = el('button','mini-btn'); delBtn.innerHTML = '✕'; delBtn.title='Eliminar'; delBtn.type='button';
+    delBtn.addEventListener('click', (e)=>{ e.stopPropagation(); if(confirm('¿Eliminar "'+item.title+'"?')) deleteItem(item.id); });
+    actions.appendChild(editBtn); actions.appendChild(delBtn);
+    top.appendChild(actions);
+  }
   card.appendChild(top);
 
   if(item.detail){
@@ -480,43 +456,44 @@ function makeCard(item){
   }
   card.appendChild(tags);
 
-  const footRow = el('div','card-footer-row');
-  const moveBtns = el('div','move-btns');
-  const up = el('button','mini-btn'); up.innerHTML='↑'; up.type='button'; up.title='Subir prioridad';
-  up.addEventListener('click', (e)=>{ e.stopPropagation(); nudgeItem(item.id,-1); });
-  const down = el('button','mini-btn'); down.innerHTML='↓'; down.type='button'; down.title='Bajar prioridad';
-  down.addEventListener('click', (e)=>{ e.stopPropagation(); nudgeItem(item.id,1); });
-  moveBtns.appendChild(up); moveBtns.appendChild(down);
+  if(editable){
+    const footRow = el('div','card-footer-row');
+    const moveBtns = el('div','move-btns');
+    const up = el('button','mini-btn'); up.innerHTML='↑'; up.type='button'; up.title='Subir prioridad';
+    up.addEventListener('click', (e)=>{ e.stopPropagation(); nudgeItem(item.id,-1); });
+    const down = el('button','mini-btn'); down.innerHTML='↓'; down.type='button'; down.title='Bajar prioridad';
+    down.addEventListener('click', (e)=>{ e.stopPropagation(); nudgeItem(item.id,1); });
+    moveBtns.appendChild(up); moveBtns.appendChild(down);
 
-  const statusSel = el('select','status-select');
-  STATUSES.forEach(s=>{
-    const opt = document.createElement('option');
-    opt.value = s.key; opt.textContent = s.label;
-    if(s.key===item.status) opt.selected = true;
-    statusSel.appendChild(opt);
-  });
-  statusSel.addEventListener('click', e=>e.stopPropagation());
-  statusSel.addEventListener('change', ()=>{
-    const targetCount = state.items.filter(i=>i.status===statusSel.value).length;
-    moveItem(item.id, statusSel.value, targetCount);
-  });
+    const statusSel = el('select','status-select');
+    STATUSES.forEach(s=>{
+      const opt = document.createElement('option');
+      opt.value = s.key; opt.textContent = s.label;
+      if(s.key===item.status) opt.selected = true;
+      statusSel.appendChild(opt);
+    });
+    statusSel.addEventListener('click', e=>e.stopPropagation());
+    statusSel.addEventListener('change', ()=>{
+      const targetCount = state.items.filter(i=>i.status===statusSel.value).length;
+      moveItem(item.id, statusSel.value, targetCount);
+    });
 
-  footRow.appendChild(moveBtns);
-  footRow.appendChild(statusSel);
-  card.appendChild(footRow);
+    footRow.appendChild(moveBtns);
+    footRow.appendChild(statusSel);
+    card.appendChild(footRow);
 
-  card.addEventListener('click', ()=> openCardModal(item));
+    card.addEventListener('click', ()=> openCardModal(item));
 
-  // Drag events
-  card.addEventListener('dragstart', ()=>{
-    card.classList.add('dragging');
-    dragState.id = item.id;
-  });
-  card.addEventListener('dragend', ()=>{
-    card.classList.remove('dragging');
-    dragState.id = null;
-    document.querySelectorAll('.column-list').forEach(c=>c.classList.remove('drag-over'));
-  });
+    card.addEventListener('dragstart', ()=>{
+      card.classList.add('dragging');
+      dragState.id = item.id;
+    });
+    card.addEventListener('dragend', ()=>{
+      card.classList.remove('dragging');
+      dragState.id = null;
+      document.querySelectorAll('.column-list').forEach(c=>c.classList.remove('drag-over'));
+    });
+  }
 
   return card;
 }
@@ -602,7 +579,7 @@ function getDragAfterElement(container, y){
 /* ============================================================
    MODAL: ADD/EDIT CARD
    ============================================================ */
-function populateSelect(sel, dict, includeAll){
+function populateSelect(sel, dict){
   sel.innerHTML = '';
   Object.entries(dict).forEach(([key,def])=>{
     const opt = document.createElement('option');
@@ -647,59 +624,6 @@ function closeCardModal(){
 }
 
 /* ============================================================
-   MODAL: SETTINGS
-   ============================================================ */
-function openSettingsModal(){
-  document.getElementById('g-owner').value = config.owner || '';
-  document.getElementById('g-repo').value = config.repo || '';
-  document.getElementById('g-branch').value = config.branch || 'main';
-  document.getElementById('g-path').value = config.path || 'data/plan.json';
-  document.getElementById('g-token').value = config.token || '';
-  document.getElementById('connStatus').textContent = '';
-  document.getElementById('connStatus').className = 'conn-status';
-  document.getElementById('settingsOverlay').classList.add('open');
-}
-function closeSettingsModal(){
-  document.getElementById('settingsOverlay').classList.remove('open');
-}
-
-async function testConnection(){
-  const statusEl = document.getElementById('connStatus');
-  statusEl.className = 'conn-status';
-  statusEl.textContent = 'Probando…';
-  const owner = document.getElementById('g-owner').value.trim();
-  const repo = document.getElementById('g-repo').value.trim();
-  const token = document.getElementById('g-token').value.trim();
-  if(!owner || !repo || !token){
-    statusEl.textContent = 'Completa usuario, repositorio y token.';
-    statusEl.classList.add('bad');
-    return;
-  }
-  try{
-    const res = await fetch(`${API_BASE}/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}`, {
-      headers: { 'Authorization':'Bearer '+token, 'Accept':'application/vnd.github+json', 'X-GitHub-Api-Version':'2022-11-28' }
-    });
-    if(res.status===200){
-      const data = await res.json();
-      statusEl.textContent = '✓ Conectado a ' + data.full_name + (data.private ? ' (privado)' : ' (público)');
-      statusEl.classList.add('ok');
-    } else if(res.status===404){
-      statusEl.textContent = 'No se encontró ese repositorio con este token.';
-      statusEl.classList.add('bad');
-    } else if(res.status===401){
-      statusEl.textContent = 'Token inválido.';
-      statusEl.classList.add('bad');
-    } else {
-      statusEl.textContent = 'Error inesperado (código ' + res.status + ').';
-      statusEl.classList.add('bad');
-    }
-  }catch(e){
-    statusEl.textContent = 'No se pudo conectar (revisa tu internet).';
-    statusEl.classList.add('bad');
-  }
-}
-
-/* ============================================================
    EVENT BINDING
    ============================================================ */
 function bindStaticUI(){
@@ -729,34 +653,16 @@ function bindStaticUI(){
     closeCardModal();
   });
 
-  document.getElementById('settingsBtn').addEventListener('click', openSettingsModal);
-  document.getElementById('closeSettingsBtn').addEventListener('click', closeSettingsModal);
-  document.getElementById('settingsOverlay').addEventListener('click', (e)=>{ if(e.target.id==='settingsOverlay') closeSettingsModal(); });
-  document.getElementById('testConnBtn').addEventListener('click', testConnection);
-  document.getElementById('settingsForm').addEventListener('submit', async (e)=>{
-    e.preventDefault();
-    config.owner = document.getElementById('g-owner').value.trim();
-    config.repo = document.getElementById('g-repo').value.trim();
-    config.branch = document.getElementById('g-branch').value.trim() || 'main';
-    config.path = document.getElementById('g-path').value.trim() || 'data/plan.json';
-    config.token = document.getElementById('g-token').value.trim();
-    persistConfig();
-    closeSettingsModal();
-    renderSyncStatus();
-    if(isReadConfigured()){
-      const r = await fetchRemote();
-      if(r.ok && !r.notFound){ renderAll(); }
-      else if(r.ok && r.notFound){ if(isWriteConfigured()) await saveRemote(true); renderAll(); }
-      else { bannerForFetchFailure(r); renderSyncStatus(); }
-    }
-  });
-
   const identitySelect = document.getElementById('identitySelect');
   identitySelect.value = loadIdentity();
-  identitySelect.addEventListener('change', ()=> saveIdentity(identitySelect.value));
+  identitySelect.addEventListener('change', ()=>{
+    saveIdentity(identitySelect.value);
+    updateEditModeUI();
+    renderBoard();
+  });
 
   document.addEventListener('keydown', (e)=>{
-    if(e.key==='Escape'){ closeCardModal(); closeSettingsModal(); }
+    if(e.key==='Escape'){ closeCardModal(); }
   });
 }
 
@@ -764,6 +670,7 @@ function bindStaticUI(){
    RENDER ALL / INIT
    ============================================================ */
 function renderAll(){
+  updateEditModeUI();
   renderFilters();
   renderStats();
   renderBoard();
@@ -772,47 +679,11 @@ function renderAll(){
 }
 
 async function init(){
-  loadConfig();
   bindStaticUI();
-
-  if(isReadConfigured()){
-    const r = await fetchRemote();
-    if(r.ok && !r.notFound){
-      // items already set from remote
-    } else if(r.ok && r.notFound){
-      state.items = seedItems();
-    } else {
-      bannerForFetchFailure(r);
-      const cache = loadCache();
-      state.items = cache ? cache.items : seedItems();
-      if(cache) state.sha = cache.sha;
-    }
-  } else {
-    const cache = loadCache();
-    state.items = cache ? cache.items : seedItems();
-    if(cache) state.sha = cache.sha;
-  }
+  await loadAll();
+  await ensureSeeded();
   renderAll();
-  startAutoRefresh();
-}
-
-function startAutoRefresh(){
-  if(!isReadConfigured()) return;
-  document.addEventListener('visibilitychange', ()=>{
-    if(document.visibilityState === 'visible') refreshFromRemote();
-  });
-  setInterval(()=>{
-    if(document.visibilityState === 'visible') refreshFromRemote();
-  }, 5*60*1000);
-}
-
-async function refreshFromRemote(){
-  // Don't clobber an editor's unsynced local changes; a read-only viewer
-  // has nothing local worth protecting, since they can never save anyway.
-  if(isWriteConfigured() && state.dirty) return;
-  const r = await fetchRemote();
-  if(r.ok && !r.notFound){ renderAll(); }
-  else if(!r.ok){ bannerForFetchFailure(r); renderSyncStatus(); }
+  subscribeRealtime();
 }
 
 init();
